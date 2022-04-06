@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- https://www.bootstrapcdn.com/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Records Shop</title>
+</head>
+
+<body>
+    <h1>Records Shop</h1>
+    <div id="app">
+        <h2>Get All etc (GET)</h2>
+        <button id="getAllButton" v-on:click="getAllRecords" class="btn btn-primary">Get all Records</button>
+        <br />
+        <input v-model="TitleToGetBy" placeholder="Title" type="text" />
+        <button v-on:click="getByTitle(TitleToGetBy)" class="btn btn-primary">Get by Title</button>
+        <ul id="Recordslist" v-if="Records.length">
+            <li v-for="Record in Records">
+                {{Record.Id}} {{Record.Title}} {{Record.artistName }} 
+            </li>
+        </ul>
+        <div v-else>No Records</div>
+
+        <h2>Get by ID (GET)</h2>
+        <input v-model="idToGetBy" placeholder="id" type="number" />
+        <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get by id</button>
+        <div v-if="singleRecords">
+            {{singleRecords.id}} {{singleRecords.Title}} {{ singleRecords.artistName}}
+        </div>
+        <div v-else>No such Records</div>
+
+        <h2>Delete (DELETE)</h2>
+        <input v-model.number="deleteId" placeholder="id" type="number" />
+        <button v-on:click="deleteRecords(deleteId)" class="btn btn-warning">Delete</button>
+        {{deleteMessage}}
+
+        <h2>Add (POST)</h2>
+        <input v-model="addData.artistName" placeholder="artistName" type="text" />
+        <input v-model="addData.Title" placeholder="Title" type="text" />
+        <button v-on:click="addRecords()" class="btn btn-success">Add</button>
+        <div>{{addMessage}}</div>
+
+        <h2>Update (PUT)</h2>
+        <input v-model.number="updateData.id" placeholder="id" type="number" />
+        <input v-model="updateData.artistName" placeholder="artistName" type="text" />
+        <input v-model="updateData.Title" placeholder="Title" type="text" />
+        <button v-on:click="updateRecords()" class="btn btn-success">Update</button>
+        <div>{{updateMessage}}</div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
