@@ -7,7 +7,7 @@ Vue.createApp({
         return {
             Records: [],
             TitleToGetBy: "",
-            idToGetBy: -1,
+            idToGetBy: null,
             singleRecords: null,
             deleteId: 0,
             deleteMessage: "",
