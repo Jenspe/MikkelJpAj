@@ -36,7 +36,7 @@
         <h2>Search by name or title</h2>
         <input id="SearchInput" v-model="TitleOrNameSearch" placeholder="TitleOrName"/>
         <button id="SearchButton" v-on:click="getByNameOrTitle(TitleOrNameSearch)" class="btn btn-primary">Search by name or title</button>
-        <ol id="FoundRecords" v-if="searchedResult">
+        <ol id="FoundRecords" v-if="searchedResult.length">
             <li v-for="Record in searchedResult">
                 Id: {{Record.id}} | Title: {{Record.title}} | ArtistName: {{Record.artistName }} 
             </li>
