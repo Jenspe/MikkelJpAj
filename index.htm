@@ -22,7 +22,7 @@
         <button v-on:click="getByTitle(TitleToGetBy)" class="btn btn-primary">Get by Title</button>
         <ul id="Recordslist" v-if="Records.length">
             <li v-for="Record in Records">
-                {{Record.Id}} {{Record.Title}} {{Record.artistName }} 
+                Id: {{Record.id}} | Title: {{Record.title}} | ArtistName: {{Record.artistName }} 
             </li>
         </ul>
         <div v-else>No Records</div>
@@ -31,7 +31,17 @@
         <input v-model="idToGetBy" placeholder="id" type="number" />
         <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get by id</button>
         <div v-if="singleRecords">
-            {{singleRecords.id}} {{singleRecords.Title}} {{ singleRecords.artistName}}
+            Id: {{singleRecords.id}} | Title: {{singleRecords.title}} | ArtistName: {{ singleRecords.artistName}}
+        </div>
+        <div v-else>No such Records</div>
+
+        <h2>Search by name or title</h2>
+        <input v-model="TitleOrNameSearch" placeholder="TitleOrName"/>
+        <button v-on:click="getByNameOrTitle(TitleOrNameSearch)" class="btn btn-primary">Search by name or title</button>
+        <div v-if="searchedResult">
+            <li v-for="Record in searchedResult">
+                Id: {{Record.id}} | Title: {{Record.title}} | ArtistName: {{Record.artistName }} 
+            </li>
         </div>
         <div v-else>No such Records</div>
 

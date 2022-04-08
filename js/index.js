@@ -9,11 +9,13 @@ Vue.createApp({
             TitleToGetBy: "",
             idToGetBy: null,
             singleRecords: null,
+            TitleOrNameSearch: "",
+            searchedResult: [],
             deleteId: null,
             deleteMessage: "",
             addData: { artistName: "", Title: ""},
             addMessage: "",
-            updateData: { id: 0, artistName: "", Title: ""},
+            updateData: { id: null, artistName: "", Title: ""},
             updateMessage: ""
         }
     },
@@ -61,15 +63,25 @@ Vue.createApp({
                 alert(ex.message)
             }
         },
-        // async updateRecords() {
-        //     const url = baseUrl + "/" + this.updateData.id
-        //     try {
-        //         response = await axios.put(url, this.updateData)
-        //         this.updateMessage = "response " + response.status + " " + response.statusText
-        //         this.getAllRecords()
-        //     } catch (ex) {
-        //         alert(ex.message)
-        //     }
-        // }
+        async updateRecords() {
+            const url = baseUrl + "/update/" + this.updateData.id
+            try {
+                response = await axios.put(url, this.updateData)
+                this.updateMessage = "response " + response.status + " " + response.statusText
+                this.getAllRecords()
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
+
+        async getByNameOrTitle(input) {
+            const url = baseUrl + "/search/" + input
+            try {
+                const response = await axios.get(url)
+                this.searchedResult = await response.data
+            } catch (ex) {
+                alert(ex.message)
+            }
+        }
     }
 }).mount("#app")
