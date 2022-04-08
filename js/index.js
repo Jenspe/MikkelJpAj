@@ -43,7 +43,7 @@ Vue.createApp({
             }
         },
         async deleteRecords(deleteId) {
-            const url = baseUrl + "/" + deleteId
+            const url = baseUrl + "/delete/" + deleteId
             try {
                 response = await axios.delete(url)
                 this.deleteMessage = response.status + " " + response.statusText
