@@ -6,7 +6,6 @@ Vue.createApp({
     data() {
         return {
             Records: [],
-            TitleToGetBy: "",
             idToGetBy: null,
             singleRecords: null,
             TitleOrNameSearch: "",
