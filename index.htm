@@ -28,7 +28,7 @@
         <h2>Get by ID (GET)</h2>
         <input id="GetByIdInput" v-model="idToGetBy" placeholder="id" type="number" />
         <button id="GetByIdButton" v-on:click="getById(idToGetBy)" class="btn btn-primary">Get by id</button>
-        <div v-if="singleRecords">
+        <div id="FoundRecord" v-if="singleRecords">
             Id: {{singleRecords.id}} | Title: {{singleRecords.title}} | ArtistName: {{ singleRecords.artistName}}
         </div>
         <div v-else>No such Records</div>
