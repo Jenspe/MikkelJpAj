@@ -9,7 +9,7 @@ Vue.createApp({
             TitleToGetBy: "",
             idToGetBy: null,
             singleRecords: null,
-            deleteId: 0,
+            deleteId: null,
             deleteMessage: "",
             addData: { artistName: "", Title: ""},
             addMessage: "",
